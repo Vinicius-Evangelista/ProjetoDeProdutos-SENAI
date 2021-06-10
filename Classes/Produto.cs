@@ -31,7 +31,7 @@ namespace projeto_produtos.Classes
 
             foreach (Produto item in ListaDeProdutos)
             {
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
                 Console.WriteLine("=================================");
                 Console.WriteLine($"Marca: {item.MarcaProd} ");
                 Console.WriteLine($"Código: {item.Codigo} ");

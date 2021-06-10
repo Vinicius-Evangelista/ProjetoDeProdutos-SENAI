@@ -12,9 +12,6 @@ namespace projeto_produtos.Classes
 
         bool Logado = true;
 
-
-        bool Sistema = true;
-
         public bool Menu = true;
 
         Marca marca = new Marca();
@@ -41,7 +38,7 @@ namespace projeto_produtos.Classes
             {
                 do
                 {
-
+                    
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($@"Você deseja se Cadastrar ou Fazer login?
                               ._________________________________________.
@@ -106,7 +103,8 @@ namespace projeto_produtos.Classes
 
                 while (Online == false)
                 {
-                    Console.WriteLine($@".==========================.  
+                    Console.WriteLine($@"
+                                     .==========================.  
                                      | O que você deseja fazer? |
                                      '=========================='
 
@@ -155,6 +153,8 @@ namespace projeto_produtos.Classes
                                 if (respostaMarca == "S")
                                 {
                                     novaMarca.Listar();
+                                    Console.ForegroundColor = ConsoleColor.Green;
+
                                     Console.WriteLine("Qual a marca do seu Produto?");
                                     novoProduto.MarcaProd = Console.ReadLine();
 
@@ -182,6 +182,8 @@ namespace projeto_produtos.Classes
                                         marca1.Codigo = int.Parse(Console.ReadLine());
 
                                         novaMarca.Listar();
+                                        Console.ForegroundColor = ConsoleColor.Green;
+
 
                                         Console.WriteLine("Deseja cadastrar um novo produto? S/N");
                                         string resposta = Console.ReadLine().ToUpper();
@@ -277,11 +279,11 @@ namespace projeto_produtos.Classes
 
                             if (Apagar == "S")
                             {
-                                // user1.Email = "";
+                                user1.Email = "";
 
-                                // user1.Nome = "";
+                                user1.Nome = "";
 
-                                // user1.Senha = "";
+                                user1.Senha = "";
 
                                 Console.WriteLine(user1.DeletarUser(user1));
 
@@ -298,6 +300,8 @@ namespace projeto_produtos.Classes
                         case "6":
 
                             novaMarca.Listar();
+                            Console.ForegroundColor = ConsoleColor.Green;
+
 
                             break;
 
