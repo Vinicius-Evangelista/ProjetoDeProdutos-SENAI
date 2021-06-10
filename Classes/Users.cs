@@ -24,7 +24,7 @@ namespace projeto_produtos.Classes
 
         public string CadastrarUser(Users users)
         {
-            return "Usuario cadastrado com sucesso !";
+            return "\nUsuario cadastrado com sucesso !";
         }
 
         public string DeletarUser(Users users)
@@ -34,7 +34,7 @@ namespace projeto_produtos.Classes
             Email = "";
             Senha = "";
 
-            return "Usuario apagado";
+            return "\nUsuario apagado";
         }
     }
 }

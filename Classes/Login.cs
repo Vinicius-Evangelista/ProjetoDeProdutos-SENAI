@@ -24,12 +24,12 @@ namespace projeto_produtos.Classes
 
         public string Deslogar(Users users)
         {
-            return "Deslogando";
+            return "\nDeslogando...'";
         }
 
         public string Logar(Users users)
         {
-            return "Logando";
+            return "\nLogando ...";
         }
 
         public void Login1(Users users)
@@ -38,7 +38,7 @@ namespace projeto_produtos.Classes
             {
                 do
                 {
-                    
+
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($@"Você deseja se Cadastrar ou Fazer login?
                               ._________________________________________.
@@ -56,28 +56,28 @@ namespace projeto_produtos.Classes
                             Console.WriteLine("Digite seu Email");
                             user1.Email = Console.ReadLine();
 
-                            Console.WriteLine("Digite seu Nome");
+                            Console.WriteLine("\nDigite seu Nome");
                             user1.Nome = Console.ReadLine();
 
-                            Console.WriteLine("Crie sua Senha");
+                            Console.WriteLine("\nCrie sua Senha");
                             user1.Senha = Console.ReadLine();
 
-                            Console.WriteLine("Data do seu Cadastro: " + Datacadastro);
+                            Console.WriteLine("\nData do seu Cadastro: " + Datacadastro);
 
                             Console.WriteLine(users.CadastrarUser(user1));
 
                             break;
 
                         case "2":
-                            Console.WriteLine("Digite o Email Cadastrado");
+                            Console.WriteLine("\nDigite o Email Cadastrado");
                             string emailLog = Console.ReadLine();
 
-                            Console.WriteLine("Digite a senha Cadastrada");
+                            Console.WriteLine("\nDigite a senha Cadastrada");
                             string senhaLog = Console.ReadLine();
 
                             if (emailLog != user1.Email || senhaLog != user1.Senha)
                             {
-                                Console.WriteLine("Email ou Senha incorretos, digite novamente!");
+                                Console.WriteLine("\nEmail ou Senha incorretos, digite novamente!");
                             }
                             else
                             {
@@ -89,12 +89,14 @@ namespace projeto_produtos.Classes
 
                         case "3":
 
-                            Console.WriteLine("Deseja realmente fazer isso ? S/N");
+                            Console.WriteLine("\nDeseja realmente fazer isso ? S/N");
                             string verificacao = Console.ReadLine().ToUpper();
 
                             if (verificacao == "S")
                             {
                                 Logado = false;
+                                Menu = false;
+                                Online = true;
                             }
                             break;
                     }
@@ -104,21 +106,21 @@ namespace projeto_produtos.Classes
                 while (Online == false)
                 {
                     Console.WriteLine($@"
-                                     .==========================.  
-                                     | O que você deseja fazer? |
-                                     '=========================='
+     .==========================.  
+     | O que você deseja fazer? |
+    '=========================='
 
-                                .___________________________________.  
-                                |===================================|
-                                | 1 - Cadastrar Produto             |
-                                | 2 - Cadastra Marca                |
-                                | 3 - Deletar Produto               |
-                                | 4 - Deletar Marca                 |
-                                | 5 - Deletar Usuário               |
-                                | 6 - Listar Marca                  |
-                                | 7 - Listar Produto                | 
-                                | 8 - Deslogar                      |
-                                '==================================='
+.___________________________________.  
+|===================================|
+| 1 - Cadastrar Produto             |
+| 2 - Cadastra Marca                |
+| 3 - Deletar Produto               |
+| 4 - Deletar Marca                 |
+| 5 - Deletar Usuário               |
+| 6 - Listar Marca                  |
+| 7 - Listar Produto                | 
+| 8 - Deslogar                      |
+'==================================='
                                                 ");
                     string optionsMN = Console.ReadLine();
 
@@ -137,17 +139,20 @@ namespace projeto_produtos.Classes
                             {
                                 novoProduto = new Produto();
 
-                                Console.WriteLine("Qual o nome do produto?");
+                                Console.WriteLine("\nQual o nome do produto?");
                                 novoProduto.NomeProduto = Console.ReadLine();
 
-                                Console.WriteLine("Qual o preço do produto?");
+                                Console.WriteLine("\nQual o preço do produto?");
                                 novoProduto.Preco = float.Parse(Console.ReadLine());
 
-                                Console.WriteLine("Qual o código do seu produto?");
+                                Console.WriteLine("\nQual o código do seu produto?");
                                 novoProduto.Codigo = int.Parse(Console.ReadLine());
 
-                                Console.WriteLine("A marca desejada ja foi cadastrada? S/N");
+                                Console.WriteLine("\nA marca desejada ja foi cadastrada? S/N");
                                 string respostaMarca = Console.ReadLine().ToUpper();
+
+                                novoProduto.CadastradoPor = user1.Nome;
+
 
 
                                 if (respostaMarca == "S")
@@ -155,10 +160,10 @@ namespace projeto_produtos.Classes
                                     novaMarca.Listar();
                                     Console.ForegroundColor = ConsoleColor.Green;
 
-                                    Console.WriteLine("Qual a marca do seu Produto?");
+                                    Console.WriteLine("\nQual a marca do seu Produto?");
                                     novoProduto.MarcaProd = Console.ReadLine();
 
-                                    Console.WriteLine("Deseja cadastrar mais um produto ? S/N");
+                                    Console.WriteLine("\nDeseja cadastrar mais um produto ? S/N");
                                     string validacaoResposta = Console.ReadLine().ToUpper();
 
 
@@ -175,17 +180,17 @@ namespace projeto_produtos.Classes
                                     {
 
 
-                                        Console.WriteLine("Qual o nome da marca que você deseja cadastrar?");
+                                        Console.WriteLine("\nQual o nome da marca que você deseja cadastrar?");
                                         marca1.NomeMarca = Console.ReadLine();
 
-                                        Console.WriteLine("Qual o código da marca que você deseja cadastrar?");
+                                        Console.WriteLine("\nQual o código da marca que você deseja cadastrar?");
                                         marca1.Codigo = int.Parse(Console.ReadLine());
 
                                         novaMarca.Listar();
                                         Console.ForegroundColor = ConsoleColor.Green;
 
 
-                                        Console.WriteLine("Deseja cadastrar um novo produto? S/N");
+                                        Console.WriteLine("\nDeseja cadastrar um novo produto? S/N");
                                         string resposta = Console.ReadLine().ToUpper();
 
                                         novaMarca.Cadastrar(marca1);
@@ -219,13 +224,13 @@ namespace projeto_produtos.Classes
                             {
                                 marca1 = new Marca();
 
-                                Console.WriteLine("Qual o nome da marca que você deseja cadastrar?");
+                                Console.WriteLine("\nQual o nome da marca que você deseja cadastrar?");
                                 marca1.NomeMarca = Console.ReadLine();
 
-                                Console.WriteLine("Qual o código da marca que você deseja cadastrar?");
+                                Console.WriteLine("\nQual o código da marca que você deseja cadastrar?");
                                 marca1.Codigo = int.Parse(Console.ReadLine());
 
-                                Console.WriteLine("Deseja cadastrar uma nova marca? S/N");
+                                Console.WriteLine("\nDeseja cadastrar uma nova marca? S/N");
                                 string resposta = Console.ReadLine().ToUpper();
 
                                 novaMarca.Cadastrar(marca1);
@@ -248,9 +253,10 @@ namespace projeto_produtos.Classes
                         case "3":
 
 
+
                             produto.ListarP();
 
-                            Console.WriteLine("Digite a posicão do produto que você deseja deletar");
+                            Console.WriteLine("\nDigite a posicão do produto que você deseja deletar");
                             int verficar = int.Parse(Console.ReadLine());
 
                             verficar = verficar - 1;
@@ -263,7 +269,7 @@ namespace projeto_produtos.Classes
 
                             novaMarca.Listar();
 
-                            Console.WriteLine("Digite a posição do produto que você deseja deletar");
+                            Console.WriteLine("\nDigite a posição do produto que você deseja deletar");
 
                             int verificar = int.Parse(Console.ReadLine());
 
@@ -274,7 +280,7 @@ namespace projeto_produtos.Classes
 
                         case "5":
 
-                            Console.WriteLine("Você tem certeza disso ? S/N");
+                            Console.WriteLine("\nVocê tem certeza disso ? S/N");
                             string Apagar = Console.ReadLine().ToUpper();
 
                             if (Apagar == "S")
@@ -306,14 +312,15 @@ namespace projeto_produtos.Classes
                             break;
 
                         case "7":
-
+            
                             produto.ListarP();
+                            Console.ForegroundColor = ConsoleColor.Green;
 
                             break;
 
                         case "8":
 
-                            Console.WriteLine("Deseja realmente deslogar ? S/N");
+                            Console.WriteLine("\nDeseja realmente deslogar ? S/N");
                             string verificacao = Console.ReadLine().ToUpper();
 
                             if (verificacao == "S")

@@ -16,13 +16,13 @@ namespace projeto_produtos.Classes
         public List<Marca> Marcas = new List<Marca>();
 
         List<Marca> marcas1 = new List<Marca>();
-        
-        
+
+
         public string Cadastrar(Marca novaMarca)
         {
 
             Marcas.Add(novaMarca);
-            return "A marca foi registrada com sucesso !";  
+            return "\nA marca foi registrada com sucesso !";
 
             // funcionando
         }
@@ -31,26 +31,28 @@ namespace projeto_produtos.Classes
         {
             foreach (Marca item in Marcas)
             {
+                int i = 1;
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("=================================");
+                Console.WriteLine("\n=================================");
                 Console.WriteLine($"Código: {item.Codigo}");
-                Console.WriteLine($"Nome da marca: {item.NomeMarca}");
-                Console.WriteLine(DataCadastro);
+                Console.WriteLine($@"Nome da marca: {item.NomeMarca}                  {i}° Produto     ");
+                Console.WriteLine(item.DataCadastro);
                 Console.ResetColor();
-            }      
-          
+                i++;
+            }
+
             // funcionando
-            
+
             return Marcas;
         }
 
         public string Deletar(Marca marca, int index)
         {
-        
-                Marcas.RemoveAt(index);
-            
 
-            return "Marca removida com sucesso";
+            Marcas.RemoveAt(index);
+
+
+            return "\nMarca removida com sucesso";
 
             // funcionando
         }

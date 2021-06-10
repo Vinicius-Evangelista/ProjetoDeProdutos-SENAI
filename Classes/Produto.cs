@@ -3,7 +3,7 @@ using projeto_produtos.Interfaces;
 using System;
 namespace projeto_produtos.Classes
 {
-    public class Produto : Marca,IProduto
+    public class Produto : Marca, IProduto
     {
 
         public string MarcaProd;
@@ -13,7 +13,10 @@ namespace projeto_produtos.Classes
 
         public float Preco;
 
-        private DateTime DataCadastro = DateTime.Now;
+        public DateTime DataCadastro = DateTime.Now;
+
+
+        public int contador = 0;
 
 
         public string CadastradoPor;
@@ -23,7 +26,9 @@ namespace projeto_produtos.Classes
         public string Cadastrar(Produto novoProduto)
         {
             ListaDeProdutos.Add(novoProduto);
-            return "Produto Cadastrado!";
+            contador++;
+            return "\nProduto Cadastrado!";
+
         }
 
         public List<Produto> ListarP()
@@ -31,16 +36,18 @@ namespace projeto_produtos.Classes
 
             foreach (Produto item in ListaDeProdutos)
             {
+                
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
                 Console.WriteLine("=================================");
                 Console.WriteLine($"Marca: {item.MarcaProd} ");
                 Console.WriteLine($"Código: {item.Codigo} ");
-                Console.WriteLine($"Nome do Produto: {item.NomeProduto} ");
+                Console.WriteLine($@"Nome do Produto: {item.NomeProduto}              {item.contador}° Produto      ");
                 Console.WriteLine($"Preço: {item.Preco:C2} ");
-                Console.WriteLine($"Cadastrado por:{item.CadastradoPor} ");
+                Console.WriteLine($"Cadastrado por: {item.CadastradoPor} ");
+                Console.WriteLine($"Data de cadastro: {item.DataCadastro} ");
                 Console.ResetColor();
-            }
 
+            }
             return ListaDeProdutos;
         }
 
@@ -48,7 +55,7 @@ namespace projeto_produtos.Classes
         {
             ListaDeProdutos.RemoveAt(index);
 
-            return "Produto deletado com sucesso!";
+            return "\nProduto deletado com sucesso!";
         }
 
     }
